@@ -1,4 +1,4 @@
-# Iris Flower Classification using Hyperparameter Tuning
+# Iris Flower Classification using Machine Learning & Hyperparameter Tuning
 
 Optimising machine learning model performance using **GridSearchCV** and **RandomizedSearchCV** on the famous Iris Flower dataset.
 
@@ -158,32 +158,60 @@ RandomizedSearchCV significantly reduces computation time while often producing 
 
 # 📈 Model Evaluation
 
-Model performance was evaluated using classification accuracy.
+The machine learning models were evaluated using **classification accuracy** on the test dataset.
 
-The optimisation techniques were compared based on their ability to identify the best-performing Support Vector Machine model through cross-validation.
+To further optimise model performance, **5-fold Cross Validation** was applied using both **GridSearchCV** and **RandomizedSearchCV** on the Support Vector Machine (SVM) classifier.
 
-Evaluation focused on:
+The evaluation focused on:
 
-- Accuracy Score
-- Cross Validation Performance
-- Best Hyperparameter Combination
+- Classification Accuracy
+- Cross-Validation Score
+- Hyperparameter Optimisation
 - Model Comparison
 
 ---
 
 # 📊 Results
 
-The project demonstrated that hyperparameter tuning can improve machine learning model performance by systematically searching for optimal parameter values.
+Two baseline classification models were trained and evaluated on the Iris Flower dataset.
 
-Key outcomes include:
+| Model | Test Accuracy |
+|--------|--------------:|
+| K-Nearest Neighbors (KNN) | **100%** |
+| Support Vector Machine (SVM) | **100%** |
 
-- Successfully trained baseline K-Nearest Neighbours and Support Vector Machine classifiers.
-- Applied GridSearchCV to perform exhaustive hyperparameter optimisation.
-- Applied RandomizedSearchCV to efficiently search the hyperparameter space.
-- Compared both optimisation techniques using cross-validation.
-- Identified the best-performing Support Vector Machine configuration.
+Both models achieved perfect classification accuracy on the test dataset.
 
-This project highlights the importance of model optimisation before deploying machine learning models in real-world applications.
+To investigate whether further optimisation could improve generalisation, hyperparameter tuning was performed using **GridSearchCV** and **RandomizedSearchCV**.
+
+### GridSearchCV Results (5-Fold Cross Validation)
+
+| C | Kernel | Mean Cross-Validation Accuracy |
+|---|--------|------------------------------:|
+| 1 | RBF | **98.00%** |
+| 1 | Linear | **98.00%** |
+| 10 | RBF | **98.00%** |
+| 10 | Linear | 97.33% |
+| 20 | RBF | 96.67% |
+| 20 | Linear | 96.67% |
+| 30 | RBF | 96.00% |
+| 30 | Linear | 96.00% |
+
+GridSearchCV evaluated **8 different hyperparameter combinations** using **5-fold Cross Validation**, allowing a systematic comparison of SVM configurations.
+
+### RandomizedSearchCV Results
+
+RandomizedSearchCV evaluated **4 randomly selected parameter combinations** from the predefined search space.
+
+The best sampled configuration achieved a **98.00% mean cross-validation accuracy**, demonstrating that RandomizedSearchCV can produce performance comparable to GridSearchCV while evaluating fewer combinations and requiring less computational time.
+
+### Key Findings
+
+- ✅ K-Nearest Neighbors achieved **100% test accuracy**.
+- ✅ Support Vector Machine achieved **100% test accuracy**.
+- ✅ GridSearchCV evaluated every parameter combination within the search space.
+- ✅ RandomizedSearchCV efficiently searched the parameter space using random sampling.
+- ✅ Both optimisation techniques demonstrated the importance of systematic hyperparameter tuning for improving model selection.
 
 ---
 
